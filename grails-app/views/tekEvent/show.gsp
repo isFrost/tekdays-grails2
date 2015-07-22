@@ -22,21 +22,15 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list tekEvent">
-			
-				<g:if test="${tekEventInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="tekEvent.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${tekEventInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
+						
 				<g:if test="${tekEventInstance?.city}">
 				<li class="fieldcontain">
-					<span id="city-label" class="property-label"><g:message code="tekEvent.city.label" default="City" /></span>
+					<span id="city-label" class="property-label">Location</span>
 					
-						<span class="property-value" aria-labelledby="city-label"><g:fieldValue bean="${tekEventInstance}" field="city"/></span>
+						<span class="property-value" aria-labelledby="city-label">
+							<g:fieldValue bean="${tekEventInstance}" field="venue"/>
+							<g:fieldValue bean="${tekEventInstance}" field="city"/>
+						</span>
 					
 				</li>
 				</g:if>
@@ -72,7 +66,7 @@
 				<li class="fieldcontain">
 					<span id="startDate-label" class="property-label"><g:message code="tekEvent.startDate.label" default="Start Date" /></span>
 					
-						<span class="property-value" aria-labelledby="startDate-label"><g:formatDate date="${tekEventInstance?.startDate}" /></span>
+						<span class="property-value" aria-labelledby="startDate-label"><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance?.startDate}" /></span>
 					
 				</li>
 				</g:if>
@@ -81,7 +75,7 @@
 				<li class="fieldcontain">
 					<span id="endDate-label" class="property-label"><g:message code="tekEvent.endDate.label" default="End Date" /></span>
 					
-						<span class="property-value" aria-labelledby="endDate-label"><g:formatDate date="${tekEventInstance?.endDate}" /></span>
+						<span class="property-value" aria-labelledby="endDate-label"><g:formatDate format="MMMM dd, yyyy" date="${tekEventInstance?.endDate}" /></span>
 					
 				</li>
 				</g:if>
@@ -102,7 +96,7 @@
 					<span id="sponsorships-label" class="property-label"><g:message code="tekEvent.sponsorships.label" default="Sponsorships" /></span>
 					
 						<g:each in="${tekEventInstance.sponsorships}" var="s">
-						<span class="property-value" aria-labelledby="sponsorships-label"><g:link controller="sponsorship" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="sponsorships-label"><g:link controller="sponsorship" action="show" id="${s.id}">${s?.sponsor.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>
@@ -113,7 +107,7 @@
 					<span id="tasks-label" class="property-label"><g:message code="tekEvent.tasks.label" default="Tasks" /></span>
 					
 						<g:each in="${tekEventInstance.tasks}" var="t">
-						<span class="property-value" aria-labelledby="tasks-label"><g:link controller="task" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="tasks-label"><g:link controller="task" action="show" id="${t.id}">${t.title}</g:link></span>
 						</g:each>
 					
 				</li>

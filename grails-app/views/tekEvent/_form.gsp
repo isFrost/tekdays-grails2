@@ -52,7 +52,7 @@
 		<g:message code="tekEvent.startDate.label" default="Start Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="startDate" precision="day"  value="${tekEventInstance?.startDate}"  />
+	<g:datePicker name="startDate" precision="day"  value="${tekEventInstance?.startDate}" years="${2008..2015}" />
 
 </div>
 
@@ -61,7 +61,7 @@
 		<g:message code="tekEvent.endDate.label" default="End Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="endDate" precision="day"  value="${tekEventInstance?.endDate}"  />
+	<g:datePicker name="endDate" precision="day"  value="${tekEventInstance?.endDate}" years="${2008..2015}" />
 
 </div>
 
@@ -144,5 +144,11 @@
 	</label>
 	<g:select name="sponsors" from="${com.tekdays.Sponsor.list()}" multiple="multiple" optionKey="id" size="5" value="${tekEventInstance?.sponsors*.id}" class="many-to-many"/>
 
+</div>
+<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'completed', 'error')} ">
+	<label for="completed">
+		<g:message code="task.completed.label" default="Completed" />
+	</label>
+	<g:checkBox name="completed" value="${taskInstance?.completed}" />
 </div>
 
