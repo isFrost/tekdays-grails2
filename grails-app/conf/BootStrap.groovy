@@ -2,8 +2,10 @@ import com.tekdays.*
 
 class BootStrap {
 
+	
     def init = { servletContext ->
 	
+	if (!TekEvent.get(1)){
 		new TekUser(
 			fullName: 'John Doe', 
 			userName: 'jdoe', 
@@ -95,7 +97,7 @@ class BootStrap {
 							contributionType:'Venue', 
 							description:'Will be paying for the Moscone'
 							).save()
-		
+		}	
 	}
     def destroy = {
     }

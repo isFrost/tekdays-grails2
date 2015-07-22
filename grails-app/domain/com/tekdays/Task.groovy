@@ -8,7 +8,7 @@ class Task {
 	Date dueDate
 	TekEvent event
 	
-	static belongsTo TekEvent
+	static belongsTo = TekEvent
 	
     static constraints = {
 		title blank: false
